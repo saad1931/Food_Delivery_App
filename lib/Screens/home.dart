@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/widgets/drawer.dart';
 import 'package:food_delivery/widgets/product.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,11 +10,11 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffCBCBCB),
-      drawer: Drawer(),
+      drawer: DrawerWidget(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Color(0xffD6B836),
-        title: Text("Home",style: TextStyle(fontSize: 18,color: Colors.black),),
+        title: Text("Home",style: GoogleFonts.poppins(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w700),),
         actions: [
           CircleAvatar(
             backgroundColor: Color(0xffD6D282),

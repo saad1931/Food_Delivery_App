@@ -39,6 +39,7 @@ class Home extends StatelessWidget {
               children: [
                 Container(
                   height: 180,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
@@ -86,10 +87,11 @@ class Home extends StatelessWidget {
                               children: [
                                 Container(
                                   height: 100,
+                                  width: 300,
                                   //color: Colors.red,
                                 ),
                                 Positioned(
-                                  right: 254,
+                                  right: 180,
                                   top:5 ,
                                   child: Text("30% Off",
                                   style: GoogleFonts.poppins(
@@ -105,7 +107,7 @@ class Home extends StatelessWidget {
                                     //   ]
                                     ),)),
                                   Positioned(
-                                  right: 218,
+                                  right: 140,
                                   top:45 ,
                                   child: Text("On all vegetables products",
                                   style: GoogleFonts.poppins(
@@ -135,12 +137,12 @@ class Home extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
                     ],
                   ),
                 ),
@@ -157,12 +159,12 @@ class Home extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
-                      Product(),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
+                      Product(context),
                     ],
                   ),
                 )

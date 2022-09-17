@@ -19,7 +19,7 @@ class SignIn extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(height: 130,),
+              SizedBox(height: 230,),
               Text("Sign in to continue",style: GoogleFonts.patrickHand(color: Colors.black,fontSize: 25,),),
               SizedBox(height: 20,),
               Image.asset('assets/images/logo.png',height: 80,),
@@ -29,8 +29,8 @@ class SignIn extends StatelessWidget {
               btn1("Sign in with apple",'assets/images/apple.png',context ),
              
               SizedBox(height: 20,),
-              Text("By signing in you are agreeing to our",style: GoogleFonts.roboto(color: Colors.black,fontSize: 10,fontWeight: FontWeight.w400),),
-              Text("Terms and Privacy Policy",style: GoogleFonts.roboto(color: Colors.black,fontSize: 10,fontWeight: FontWeight.w400),),
+              Text("By signing in you are agreeing to our",style: GoogleFonts.poppins(color: Colors.black,fontSize: 15,fontWeight: FontWeight.w500),),
+              Text("Terms and Privacy Policy",style: GoogleFonts.poppins(color: Colors.black,fontSize: 15,fontWeight: FontWeight.w500),),
 
             ],
           ),

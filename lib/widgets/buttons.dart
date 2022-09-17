@@ -7,7 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 Widget btn1(txt, img,context) {
   return SizedBox(
     height: 50,
-    width: 250,
+    width: 300,
     child: ElevatedButton(
       // onPressed: () async {
       //             await FirebaseServices().signInWithGoogle();

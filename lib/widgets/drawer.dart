@@ -1,7 +1,11 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:food_delivery/Screens/home.dart';
+import 'package:food_delivery/Screens/my_profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget DrawerWidget() {
+Widget DrawerWidget(context) {
   return Drawer(
     child: Container(
       color: Color(0xffD6B836),
@@ -14,7 +18,7 @@ Widget DrawerWidget() {
                     backgroundColor: Colors.white,
                     radius: 43,
                     child: CircleAvatar(
-                        backgroundColor: Colors.yellow, radius: 40)),
+                        backgroundImage:NetworkImage("https://avatars.githubusercontent.com/u/54960609?s=400&u=964299ada1705dc4a0f31506cb85ee703f4d059f&v=4"), radius: 40)),
                 SizedBox(width: 18),
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("Welcome to Vegi",
@@ -43,14 +47,29 @@ Widget DrawerWidget() {
               ],
             ),
           ),
-          listtile(icon: Icons.home_outlined, title: "Home"),
-          listtile(icon: Icons.shop_outlined, title: "Review Cart"),
-          listtile(icon: Icons.man_outlined, title: "My Profile"),
-          listtile(icon: Icons.notifications_outlined, title: "Notifications"),
+          GestureDetector(
+            onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Home()));
+            },
+            child: listtile(icon: Icons.home_outlined, title: "Home",)
+            ),
+
+          listtile(icon: Icons.shop_outlined, title: "Review Cart",),
+          
+          GestureDetector(
+             onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyProfile()));
+            },
+            child: listtile(icon: Icons.man_outlined, title: "My Profile",)
+            ),
+          
+          listtile(icon: Icons.notifications_outlined, title: "Notifications",),
           listtile(icon: Icons.star_outlined, title: "Rating and Reviews"),
-          listtile(icon: Icons.favorite_outlined, title: "Wishlist"),
-          listtile(icon: Icons.copy_outlined, title: "Raise a Complaint"),
-          listtile(icon: Icons.question_answer_outlined, title: "FAQs"),
+          listtile(icon: Icons.favorite_outlined, title: "Wishlist",),
+          listtile(icon: Icons.copy_outlined, title: "Raise a Complaint",),
+          listtile(icon: Icons.question_answer_outlined, title: "FAQs",),
           SizedBox(height:15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:20),
@@ -108,6 +127,7 @@ Widget DrawerWidget() {
 
 Widget listtile({required IconData icon, required String title}) {
   return ListTile(
+    
     leading:Icon(
       icon,
       size: 32,

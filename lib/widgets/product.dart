@@ -14,8 +14,7 @@ Widget Product(BuildContext context) {
       GestureDetector(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ProductOverview(),
-          ));
+            builder: (context) => ProductOverview(productImage: "https://pngimg.com/uploads/basil/basil_PNG26.png",productName:"Fresh Basill")));
         },
         child: Center(
             child: Image.network(

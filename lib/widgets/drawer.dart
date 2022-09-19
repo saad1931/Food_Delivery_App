@@ -3,6 +3,7 @@ import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Screens/home.dart';
 import 'package:food_delivery/Screens/my_profile.dart';
+import 'package:food_delivery/Screens/review_cart.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget DrawerWidget(context) {
@@ -55,7 +56,12 @@ Widget DrawerWidget(context) {
             child: listtile(icon: Icons.home_outlined, title: "Home",)
             ),
 
-          listtile(icon: Icons.shop_outlined, title: "Review Cart",),
+          GestureDetector(
+            onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ReviewCart()));
+            },
+            child: listtile(icon: Icons.shop_outlined, title: "Review Cart",)),
           
           GestureDetector(
              onTap: (){

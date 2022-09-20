@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/Screens/product_overview.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget Product(BuildContext context) {
+Widget Product(BuildContext context,productname,productimage,productprice) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 5),
-    height: 310,
-    width: 250,
+    height: 300,
+    width: 238,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Color(0xffd9dad9)),
@@ -14,18 +14,26 @@ Widget Product(BuildContext context) {
       GestureDetector(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ProductOverview(productImage: "https://pngimg.com/uploads/basil/basil_PNG26.png",productName:"Fresh Basill")));
+            builder: (context) => ProductOverview(productImage: productimage,productName:productname,productPrice:productprice ,)));
         },
         child: Center(
-            child: Image.network(
-                "https://pngimg.com/uploads/basil/basil_PNG26.png")),
+            child: Container(
+              height: 200,
+              width: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage(productimage),
+            ),
+          ),
+          ),),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Fresh Basil",
+            Text(productname,
                 style: GoogleFonts.poppins(
                     fontSize: 15,
                     color: Colors.black,
@@ -33,7 +41,7 @@ Widget Product(BuildContext context) {
             SizedBox(
               height: 5,
             ),
-            Text("50\$/50 Gram",
+            Text("$productprice\$/50 Gram",
                 style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: Colors.green,
@@ -44,10 +52,12 @@ Widget Product(BuildContext context) {
             Row(
               children: [
                 Container(
-                  width: 115,
+                  width: 113,
                   child: OutlinedButton(
                       onPressed: () {},
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             "50 Gram",
@@ -56,6 +66,7 @@ Widget Product(BuildContext context) {
                           Icon(
                             Icons.arrow_drop_down,
                             color: Colors.yellow,
+                            // size: 18,
                           ),
                         ],
                       )),
@@ -64,11 +75,11 @@ Widget Product(BuildContext context) {
                   width: 3,
                 ),
                 Container(
-                  width: 115,
+                  width: 113,
                   child: OutlinedButton(
                     onPressed: () {},
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Icon(
                           Icons.remove,

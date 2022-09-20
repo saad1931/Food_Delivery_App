@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Screens/review_cart.dart';
 import 'package:food_delivery/Screens/search.dart';
+import 'package:food_delivery/providers/product_provider.dart';
 import 'package:food_delivery/widgets/drawer.dart';
 import 'package:food_delivery/widgets/product.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late ProductProvider productProvider;
+  @override
+  void initState() {
+    // TODO: implement initState
+    ProductProvider productProvider = Provider.of(context, listen: false);
+    productProvider.FetchHerbsProductsData();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    productProvider = Provider.of(context);
     return Scaffold(
       backgroundColor: Color(0xffCBCBCB),
       drawer: DrawerWidget(context),
@@ -43,15 +60,15 @@ class Home extends StatelessWidget {
               backgroundColor: Color(0xffD6D282),
               radius: 18,
               child: IconButton(
-                onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => ReviewCart()));
-                },
-                icon:Icon( Icons.shop,
-                size: 18,
-                color: Colors.black,
-                )
-              ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ReviewCart()));
+                  },
+                  icon: Icon(
+                    Icons.shop,
+                    size: 18,
+                    color: Colors.black,
+                  )),
             ),
           ),
         ],
@@ -174,14 +191,24 @@ class Home extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                  ],
+                  children: productProvider.getHerbsProductDataList.map(
+              (herbsProductData) {
+                return Product(
+                 context,
+                 herbsProductData.productName,
+                 herbsProductData.productImage,
+                 herbsProductData.productPrice
+                );
+              },
+            ).toList(),
+                  // children: [
+                  //   Product(context),
+                  //   Product(context),
+                  //   Product(context),
+                  //   Product(context),
+                  //   Product(context),
+                  //   Product(context),
+                  // ],
                 ),
               ),
               SizedBox(
@@ -207,12 +234,12 @@ class Home extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
-                    Product(context),
+                    // Product(context),
+                    // Product(context),
+                    // Product(context),
+                    // Product(context),
+                    // Product(context),
+                    // Product(context),
                   ],
                 ),
               )

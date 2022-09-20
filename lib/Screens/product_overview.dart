@@ -7,7 +7,11 @@ enum radiocharacter { fill, outline }
 class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
-  ProductOverview({required this.productName,required  this.productImage});
+  final int productPrice;
+  ProductOverview(
+      {required this.productName,
+      required this.productImage,
+      required this.productPrice});
   //const ProductOverview({Key? key}) : super(key: key);
 
   @override
@@ -51,14 +55,13 @@ class _ProductOverviewState extends State<ProductOverview> {
                   title: Text(widget.productName,
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.w600)),
-                  subtitle: Text("\$50",
+                  subtitle: Text("\$${widget.productPrice}",
                       style: TextStyle(
                           color: Colors.green, fontWeight: FontWeight.w500))),
               Container(
                   height: 250,
                   padding: EdgeInsets.all(40),
-                  child: Image.network(
-                      widget.productImage)),
+                  child: Image.network(widget.productImage)),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 20),

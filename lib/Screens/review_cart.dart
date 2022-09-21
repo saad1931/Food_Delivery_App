@@ -38,9 +38,15 @@ class ReviewCart extends StatelessWidget {
           SizedBox(height:10),
           SearchItem(
             isBool: true,
+            productImage:"https://i.pinimg.com/originals/09/9e/a3/099ea3e3c8f022b54fe0d3e2f9745914.png",
+            productName: "Beets",
+            productPrice:110
           ),
           SearchItem(
             isBool: true,
+            productImage:"https://www.transparentpng.com/thumb/carrot/AciY35-carrot-transparent-picture.png",
+            productName: "Carrots",
+            productPrice:125
           ),
           SizedBox(height:10),
         ]

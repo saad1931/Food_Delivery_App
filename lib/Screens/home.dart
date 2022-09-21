@@ -21,6 +21,9 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     ProductProvider productProvider = Provider.of(context, listen: false);
     productProvider.FetchHerbsProductsData();
+    productProvider.FetchFruitsProductsData();
+    productProvider.FetchRootProductsData();
+
     super.initState();
   }
 
@@ -45,7 +48,9 @@ class _HomeState extends State<Home> {
             child: IconButton(
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Search()));
+                    .push(MaterialPageRoute(builder: (context) => Search(
+                      search: productProvider.getAllproducts
+                    )));
               },
               icon: Icon(
                 Icons.search,
@@ -180,9 +185,17 @@ class _HomeState extends State<Home> {
                           fontSize: 20,
                           color: Colors.green,
                           fontWeight: FontWeight.bold)),
-                  Text("View All",
-                      style: GoogleFonts.poppins(
-                          fontSize: 17, color: Colors.black)),
+                  GestureDetector(
+                     onTap:(){
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getHerbsProductDataList,
+                      )));
+                    },
+                    child: Text("View All",
+                        style: GoogleFonts.poppins(
+                            fontSize: 17, color: Colors.black)),
+                  ),
                 ],
               ),
               SizedBox(
@@ -192,15 +205,14 @@ class _HomeState extends State<Home> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: productProvider.getHerbsProductDataList.map(
-              (herbsProductData) {
-                return Product(
-                 context,
-                 herbsProductData.productName,
-                 herbsProductData.productImage,
-                 herbsProductData.productPrice
-                );
-              },
-            ).toList(),
+                    (herbsProductData) {
+                      return Product(
+                          context,
+                          herbsProductData.productName,
+                          herbsProductData.productImage,
+                          herbsProductData.productPrice);
+                    },
+                  ).toList(),
                   // children: [
                   //   Product(context),
                   //   Product(context),
@@ -222,9 +234,17 @@ class _HomeState extends State<Home> {
                           fontSize: 20,
                           color: Colors.green,
                           fontWeight: FontWeight.bold)),
-                  Text("View All",
-                      style: GoogleFonts.poppins(
-                          fontSize: 17, color: Colors.black)),
+                  GestureDetector(
+                    onTap:(){
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getFruitsProductsDataList,
+                      )));
+                    },
+                    child: Text("View All",
+                        style: GoogleFonts.poppins(
+                            fontSize: 17, color: Colors.black)),
+                  ),
                 ],
               ),
               SizedBox(
@@ -233,14 +253,72 @@ class _HomeState extends State<Home> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: [
-                    // Product(context),
-                    // Product(context),
-                    // Product(context),
-                    // Product(context),
-                    // Product(context),
-                    // Product(context),
-                  ],
+                  children: productProvider.getFruitsProductsDataList.map(
+                    (fruitsProductData) {
+                      return Product(
+                          context,
+                          fruitsProductData.productName,
+                          fruitsProductData.productImage,
+                          fruitsProductData.productPrice);
+                    },
+                  ).toList(),
+                  // [
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  //],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Root Products",
+                      style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold)),
+                  GestureDetector(
+                    onTap:(){
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Search(
+                        search: productProvider.getRootProductsDataList,
+                      )));
+                    },
+                    child: Text("View All",
+                        style: GoogleFonts.poppins(
+                            fontSize: 17, color: Colors.black)),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: productProvider.getRootProductsDataList.map(
+                    (rootProductData) {
+                      return Product(
+                          context,
+                          rootProductData.productName,
+                          rootProductData.productImage,
+                          rootProductData.productPrice);
+                    },
+                  ).toList(),
+                  // [
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  // Product(context),
+                  //],
                 ),
               )
             ],

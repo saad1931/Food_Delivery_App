@@ -7,6 +7,7 @@ import 'package:food_delivery/Screens/review_cart.dart';
 import 'package:food_delivery/Screens/search.dart';
 import 'package:food_delivery/Screens/sign_in.dart';
 import 'package:food_delivery/providers/product_provider.dart';
+import 'package:food_delivery/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -32,8 +33,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProductProvider>(
-      create: (context)=> ProductProvider(),
+    return MultiProvider(providers: 
+    [
+      ChangeNotifierProvider<ProductProvider>(
+      create: (context)=> ProductProvider(),),
+      
+      ChangeNotifierProvider<UserProvider>(
+      create: (context)=> UserProvider(),)
+    
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),

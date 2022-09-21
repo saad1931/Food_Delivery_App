@@ -1,9 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:food_delivery/config/colors.dart';
 
 class SearchItem extends StatelessWidget {
   bool isBool = false;
-  SearchItem({Key? key, required this.isBool}) : super(key: key);
+  String productName;
+  String productImage;
+  int productPrice;
+  SearchItem({
+    Key? key,
+    required this.isBool,
+    required this.productName,
+    required this.productImage,
+    required this.productPrice,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +27,7 @@ class SearchItem extends StatelessWidget {
               height: 100,
               child: Center(
                   child: Image.network(
-                      "https://pngimg.com/uploads/basil/basil_PNG26.png")),
+                      productImage)),
             )),
             Expanded(
               child: Container(
@@ -27,10 +38,10 @@ class SearchItem extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text(" Product Name",
+                      Text(productName,
                           style: TextStyle(
                               color: textColor, fontWeight: FontWeight.bold)),
-                      Text("50\$/50 Gram",
+                      Text("$productPrice\$/50 Gram",
                           style: TextStyle(
                               color: Colors.grey, fontWeight: FontWeight.bold)),
                     ],

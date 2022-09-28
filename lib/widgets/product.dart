@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Screens/product_overview.dart';
+import 'package:food_delivery/widgets/count.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+
 
 Widget Product(BuildContext context,productname,productimage,productprice) {
   return Container(
@@ -74,29 +77,7 @@ Widget Product(BuildContext context,productname,productimage,productprice) {
                 SizedBox(
                   width: 3,
                 ),
-                Container(
-                  width: 113,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.remove,
-                          color: Colors.yellow,
-                        ),
-                        Text(
-                          "1",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        Icon(
-                          Icons.add,
-                          color: Colors.yellow,
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+               Count()
               ],
             )
           ],

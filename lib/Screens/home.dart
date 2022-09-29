@@ -47,10 +47,9 @@ class _HomeState extends State<Home> {
             radius: 18,
             child: IconButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Search(
-                      search: productProvider.getAllproducts
-                    )));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        Search(search: productProvider.getAllproducts)));
               },
               icon: Icon(
                 Icons.search,
@@ -186,11 +185,11 @@ class _HomeState extends State<Home> {
                           color: Colors.green,
                           fontWeight: FontWeight.bold)),
                   GestureDetector(
-                     onTap:(){
+                    onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Search(
-                        search: productProvider.getHerbsProductDataList,
-                      )));
+                          builder: (context) => Search(
+                                search: productProvider.getHerbsProductDataList,
+                              )));
                     },
                     child: Text("View All",
                         style: GoogleFonts.poppins(
@@ -207,10 +206,10 @@ class _HomeState extends State<Home> {
                   children: productProvider.getHerbsProductDataList.map(
                     (herbsProductData) {
                       return Product(
-                          context,
-                          herbsProductData.productName,
-                          herbsProductData.productImage,
-                          herbsProductData.productPrice);
+                        productname: herbsProductData.productName,
+                        productimage: herbsProductData.productImage,
+                        productprice: herbsProductData.productPrice,
+                        productid: herbsProductData.productId);
                     },
                   ).toList(),
                   // children: [
@@ -235,11 +234,12 @@ class _HomeState extends State<Home> {
                           color: Colors.green,
                           fontWeight: FontWeight.bold)),
                   GestureDetector(
-                    onTap:(){
+                    onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Search(
-                        search: productProvider.getFruitsProductsDataList,
-                      )));
+                          builder: (context) => Search(
+                                search:
+                                    productProvider.getFruitsProductsDataList,
+                              )));
                     },
                     child: Text("View All",
                         style: GoogleFonts.poppins(
@@ -256,10 +256,10 @@ class _HomeState extends State<Home> {
                   children: productProvider.getFruitsProductsDataList.map(
                     (fruitsProductData) {
                       return Product(
-                          context,
-                          fruitsProductData.productName,
-                          fruitsProductData.productImage,
-                          fruitsProductData.productPrice);
+                          productname: fruitsProductData.productName,
+                          productimage: fruitsProductData.productImage,
+                          productprice: fruitsProductData.productPrice,
+                          productid: fruitsProductData.productId);
                     },
                   ).toList(),
                   // [
@@ -284,11 +284,11 @@ class _HomeState extends State<Home> {
                           color: Colors.green,
                           fontWeight: FontWeight.bold)),
                   GestureDetector(
-                    onTap:(){
+                    onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Search(
-                        search: productProvider.getRootProductsDataList,
-                      )));
+                          builder: (context) => Search(
+                                search: productProvider.getRootProductsDataList,
+                              )));
                     },
                     child: Text("View All",
                         style: GoogleFonts.poppins(
@@ -305,10 +305,10 @@ class _HomeState extends State<Home> {
                   children: productProvider.getRootProductsDataList.map(
                     (rootProductData) {
                       return Product(
-                          context,
-                          rootProductData.productName,
-                          rootProductData.productImage,
-                          rootProductData.productPrice);
+                          productname: rootProductData.productName,
+                          productimage: rootProductData.productImage,
+                          productprice: rootProductData.productPrice,
+                          productid: rootProductData.productId);
                     },
                   ).toList(),
                   // [

@@ -7,6 +7,7 @@ import 'package:food_delivery/Screens/review_cart.dart';
 import 'package:food_delivery/Screens/search.dart';
 import 'package:food_delivery/Screens/sign_in.dart';
 import 'package:food_delivery/providers/product_provider.dart';
+import 'package:food_delivery/providers/review_cart_provider.dart';
 import 'package:food_delivery/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,10 @@ class MyApp extends StatelessWidget {
       create: (context)=> ProductProvider(),),
       
       ChangeNotifierProvider<UserProvider>(
-      create: (context)=> UserProvider(),)
+      create: (context)=> UserProvider(),),
+
+      ChangeNotifierProvider<ReviewCartProvider>(
+      create: (context)=> ReviewCartProvider(),)
     
       ],
       child: MaterialApp(

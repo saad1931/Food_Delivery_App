@@ -1,15 +1,16 @@
-class ReviewCartMoel {
-  String CartId;
-  String CartName;
-  String CartImage;
-  int CartPrice;
-  int CartQuantity;
-
-  ReviewCartMoel({
-    required this.CartId,
-    required this.CartName,
-    required this.CartImage,
-    required this.CartPrice,
-    required this.CartQuantity,
+class ReviewCartModel {
+  String cartId;
+  String cartImage;
+  String cartName;
+  int cartPrice;
+  int cartQuantity;
+  var cartUnit;
+  ReviewCartModel({
+    required this.cartId,
+    this.cartUnit,
+    required this.cartImage,
+    required this.cartName,
+    required this.cartPrice,
+    required this.cartQuantity,
   });
 }

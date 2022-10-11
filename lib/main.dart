@@ -9,6 +9,7 @@ import 'package:food_delivery/Screens/sign_in.dart';
 import 'package:food_delivery/providers/product_provider.dart';
 import 'package:food_delivery/providers/review_cart_provider.dart';
 import 'package:food_delivery/providers/user_provider.dart';
+import 'package:food_delivery/providers/wish_list_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -43,7 +44,10 @@ class MyApp extends StatelessWidget {
       create: (context)=> UserProvider(),),
 
       ChangeNotifierProvider<ReviewCartProvider>(
-      create: (context)=> ReviewCartProvider(),)
+      create: (context) => ReviewCartProvider(),),
+
+      ChangeNotifierProvider<WishListProvider>(
+      create: (context) => WishListProvider(),),
     
       ],
       child: MaterialApp(

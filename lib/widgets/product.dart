@@ -37,6 +37,7 @@ class _ProductState extends State<Product> {
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ProductOverview(
+                      productId: widget.productid,
                       productImage: widget.productimage,
                       productName: widget.productname,
                       productPrice: widget.productprice,
@@ -79,6 +80,7 @@ class _ProductState extends State<Product> {
               Row(
                 children: [
                   Container(
+                    height: 25,
                     width: 113,
                     child: OutlinedButton(
                         onPressed: () {},
@@ -102,10 +104,10 @@ class _ProductState extends State<Product> {
                     width: 3,
                   ),
                   Count(
-                      cartId: widget.productid,
-                      cartName: widget.productname,
-                      cartImage: widget.productimage,
-                      cartPrice: widget.productprice)
+                      productId: widget.productid,
+                      productName: widget.productname,
+                      productImage:widget.productimage,
+                      productPrice: widget.productprice)
                 ],
               )
             ],

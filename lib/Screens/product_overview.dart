@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/config/colors.dart';
+import 'package:food_delivery/providers/wish_list_provider.dart';
 import 'package:food_delivery/widgets/bottom_navigationbar.dart';
+import 'package:provider/provider.dart';
 
 enum radiocharacter { fill, outline }
 
@@ -8,10 +10,15 @@ class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
   final int productPrice;
+  final String productId;
+  //final String productQuantity;
   ProductOverview(
       {required this.productName,
       required this.productImage,
-      required this.productPrice});
+      required this.productPrice,
+      required this.productId,
+      //required this.productQuantity
+      });
   //const ProductOverview({Key? key}) : super(key: key);
 
   @override
@@ -20,24 +27,93 @@ class ProductOverview extends StatefulWidget {
 
 class _ProductOverviewState extends State<ProductOverview> {
   radiocharacter _character = radiocharacter.fill;
+  bool wishListBool = false;
   @override
   Widget build(BuildContext context) {
+    WishListProvider wishListProvider = Provider.of(context);
     return Scaffold(
       bottomNavigationBar: Row(
         children: [
+          Expanded(
+      child: GestureDetector(
+         onTap: () {
+              setState(() {
+                wishListBool = !wishListBool;
+              });
+             if (wishListBool == true) {
+                  wishListProvider.addWishListData(
+                    wishListId: widget.productId,
+                    wishListImage: widget.productImage,
+                    wishListName: widget.productName,
+                    wishListPrice: widget.productPrice,
+                    wishListQuantity: 2,
+                    
+                  );
+                } else {
+                  wishListProvider.deleteWishtList(widget.productId);
+                }
+         },
+        child: Container(
+          padding:EdgeInsets.all(20),
+          color: textColor,
+          child: Row(
+            mainAxisAlignment:MainAxisAlignment.center,
+            children:[
+              Icon(
+                wishListBool == false
+                    ? Icons.favorite_outline
+                    : Icons.favorite,
+                size:20,
+                color:Colors.white
+              ),
+              SizedBox(width: 5,),
+              Text(
+                "Add to WishList",
+                style: TextStyle(
+                color:Colors.white
+                ),
+              ),
+            ]
+          )
+        ),
+      ),
+    
+    ),
+          // GestureDetector(
+          //   onTap: () {
+          //     setState(() {
+          //       wishListBool = !wishListBool;
+          //     });
+          //    if (wishListBool == true) {
+          //         wishListProvider.addWishListData(
+          //           wishListId: widget.productId,
+          //           wishListImage: widget.productImage,
+          //           wishListName: widget.productName,
+          //           wishListPrice: widget.productPrice,
+          //           wishListQuantity: 2,
+                    
+          //         );
+          //       } else {
+          //         wishListProvider.deleteWishtList(widget.productId);
+          //       }
+          //   },
+          //   child: BottomNavigationBars(
+          //     backgroundcolor: textColor,
+          //     color: Colors.white,
+          //     iconcolor: Colors.white,
+          //     title: "Add to WishList",
+          //     icondata: wishListBool == false
+          //         ? Icons.favorite_outline
+          //         : Icons.favorite,
+          //   ),
+          // ),
           BottomNavigationBars(
-            backgroundcolor: textColor,
+            backgroundcolor: primaryColor,
             color: Colors.white,
             iconcolor: Colors.white,
-            title: "Add to WishList",
-            icondata: Icons.favorite,
+            title: "Go to Cart",
+            icondata: Icons.shop,
           ),
-          BottomNavigationBars(
-              backgroundcolor: primaryColor,
-              color: Colors.white,
-              iconcolor: Colors.white,
-              title: "Go to Cart",
-              icondata: Icons.shop),
         ],
       ),
       appBar: AppBar(

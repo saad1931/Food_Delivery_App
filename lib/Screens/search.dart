@@ -69,7 +69,8 @@ class _SearchState extends State<Search> {
                 isBool: false,
                 productImage: data.productImage,
                 productName: data.productName,
-                productPrice: data.productPrice);
+                productPrice: data.productPrice,
+                );
           }).toList(),
         ),
         // SearchItem(isBool: false),
